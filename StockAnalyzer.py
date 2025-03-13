@@ -116,7 +116,7 @@ except:
 print("\n\n\n\n\n\n\n")
 if dont_run == False:
     print(response)
-    with open(r"C:\Users\Ishaan\Desktop\Python\stock_grades.txt", "w") as file:
+    with open(r"C:\Users\#File of your choce", "w") as file:
       file.write(f"{response}\n\n")
 
 else:
