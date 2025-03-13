@@ -3,7 +3,7 @@ import google.generativeai as genai
 import yfinance as yf
 from dotenv import load_dotenv
 load_dotenv()
-genai.configure(api_key='API_KEY (INSERT YOUR OWN)')
+genai.configure(api_key='API_KEY (INSERT YOUR OWN)') # I used my own API KEY, but use your own (it is free)
 
 # Create the model
 generation_config = {
@@ -13,6 +13,8 @@ generation_config = {
   "max_output_tokens": 8192,
   "response_mime_type": "text/plain",
 }
+
+# Model 2
 generation_config_2 = {
   "temperature": 0,
   "top_p": 0.95,
@@ -33,8 +35,7 @@ model_2 = genai.GenerativeModel(
 )
 
 chat_session = model.start_chat(
-    history=[
-    ]
+    history = []
   ) 
 
 what_stock = model_2.start_chat(
@@ -43,7 +44,7 @@ what_stock = model_2.start_chat(
 dont_run = False
 fortune_500_top_100 = input("Enter Stock Name or Ticker: ")
 response = ""
-try:
+try: # If they give a ticker it will not raise an exception
     ticker = yf.Ticker(fortune_500_top_100)
     financials = ticker.financials
     if (financials.empty):
@@ -55,7 +56,7 @@ try:
     print("\nFinancials:")
     print(financials)
     response = response.text
-except:
+except: #names are proccesed through here
     
     ticker_form = what_stock.send_message(fortune_500_top_100)
     response = ticker_form.text
@@ -77,7 +78,7 @@ except:
 print("\n\n\n\n\n\n\n")
 if dont_run == False:
     print(response)
-    with open(r"C:\Users\Ishaan\Desktop\Python\stock_grades.txt", "w") as file:
+    with open(r"C:\Users\Ishaan\Desktop\Python\stock_grades.txt", "w") as file: # it will write a txt file because the console is not ideal, and a docs is too inconsistent for something like this
       file.write(f"{response}\n\n")
 
 else:
