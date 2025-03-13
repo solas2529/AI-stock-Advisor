@@ -1,7 +1,6 @@
 import os
 import google.generativeai as genai
 import yfinance as yf
-import Sending_Emails as se
 import requests
 import feedparser
 from bs4 import BeautifulSoup
