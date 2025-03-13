@@ -109,8 +109,7 @@ except:
         financials = ticker.financials
         current_price = ticker.history(period="1d")["Close"].iloc[-1]
         term = input("Term: ")
-        userinput = f"Here is the current price and  the financials of {current_price} and {fortune_500_top_100}. {financials}. Along with this information, do resarch on current market trends as a macroeconomy and microeconomy as well as research recent news (up to a year ago) and give me a letter grade on whether it is ideal to invest in the {term} term."
-        response = chat_session.send_message(userinput)
+        userinput = f"Here is the current price, recent news articles, and the financials of {current_price} and {fortune_500_top_100}. {financials}. {news_list}. Along with this information, do resarch on current market trends as a macroeconomy and microeconomy as well as research recent news (up to a year ago) and give me a letter grade on whether it is ideal to invest in the {term} term."        response = chat_session.send_message(userinput)
         print("\nFinancials:")
         print(financials)
         response = response.text
